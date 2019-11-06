@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
 $login = $_GET["login"];
 $symbol = $_GET["symbol"];
 $date = $_GET["date"];
