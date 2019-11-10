@@ -16,7 +16,12 @@
 	  	<div class="container">
 	  		<div class="row">
 	  			<div class="col-9">
-	  				
+	  				<?php if(isset($_GET["ct"]) && file_exists(__DIR__."/".$_GET["ct"].".php")){
+	  					include $_GET["ct"].".php";
+	  				}else{
+	  					include "home.php";
+	  				}
+	  				?>
 	  			</div>
 	  			<div class="col-3">
 	  				    <iframe src="https://secure.icmarkets.com//Partner/Widget/PriceWidget/38308" width="273" frameborder="0"  height="480"></iframe>                    
