@@ -26,7 +26,7 @@
 	      </li>
 
 	      <li class="nav-item">
-	        <a class="nav-link" href="/copytrade.html">Singal Trade</a>
+	        <a class="nav-link" href="/singal.html">Singal Trade</a>
 	      </li>
 
 	    </ul>
