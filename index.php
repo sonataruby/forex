@@ -32,12 +32,14 @@
 		        <a class="nav-link" href="/buy.php">Mua Robot</a>
 		      </li>
 
-		      <li class="nav-item">
-		        <a class="nav-link" href="/buyrobot.php">Mở tài khoản</a>
-		      </li>
+		      
 
 		      <li class="nav-item">
 		        <a class="nav-link" href="https://www.icmarkets.com/?camp=38308" target="_bank">Mở tài khoản</a>
+		      </li>
+
+		      <li class="nav-item">
+		        <a class="nav-link" href="/copytrade.php">Singal Trade</a>
 		      </li>
 
 		    </ul>
