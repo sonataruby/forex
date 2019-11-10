@@ -22,7 +22,7 @@
 	      
 
 	      <li class="nav-item">
-	        <a class="nav-link" href="https://www.icmarkets.com/?camp=38308" target="_bank">Mở tài khoản</a>
+	        <a class="nav-link" href="http://www.icmarkets.com/forex-trading/open-a-live-account/?camp=38308" target="_bank">Mở tài khoản</a>
 	      </li>
 
 	      <li class="nav-item">
