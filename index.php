@@ -25,15 +25,19 @@
 		      </li>
 
 		      <li class="nav-item">
-		        <a class="nav-link" href="/events.php">Events Today</a>
+		        <a class="nav-link" href="/events.php">Sự kiện trong ngày</a>
 		      </li>
 		      
 		      <li class="nav-item">
-		        <a class="nav-link" href="/buy.php">Events Today</a>
+		        <a class="nav-link" href="/buy.php">Mua Robot</a>
 		      </li>
 
 		      <li class="nav-item">
-		        <a class="nav-link" href="/buyrobot.php">Events Today</a>
+		        <a class="nav-link" href="/buyrobot.php">Mở tài khoản</a>
+		      </li>
+
+		      <li class="nav-item">
+		        <a class="nav-link" href="https://www.icmarkets.com/?camp=38308" target="_bank">Mở tài khoản</a>
 		      </li>
 
 		    </ul>
@@ -46,30 +50,37 @@
 	</header>
 	<div style="padding-top: 50px; padding-bottom: 50px; ">
 	  	<div class="container">
-	  		<?php if(isset($_POST["mt5id"]) && $_POST["mt5id"]){ ?>
-	  			<div class="alert alert-success" role="alert">
-				  <b>Your Code : </b> <?php echo sha1($_POST["mt5id"]);?>
-				</div>
-	  		<?php }else if(isset($_POST["mt5id"]) && $_POST["mt5id"] == ""){?>
-	  			<div class="alert alert-danger" role="alert">
-				  <b>Error: </b> MT5 ID Empty
-				</div>
-	  		<?php } ?>
-	  		<h1>Enter MT5 ID</h1>
-	  		<form method="post">
-	  		  <div class="form-group">
-			    <label for="exampleInputMt51">MT5 ID</label>
-			    <input type="text" name="mt5id" class="form-control" id="exampleInputMt51" placeholder="MT5 ID">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleInputEmail1">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-			  </div>
-			  
-			  
-			  <button type="submit" class="btn btn-primary">Render Mac Serial</button>
-			</form>
+	  		<div class="row">
+	  			<div class="col-9">
+	  				<?php if(isset($_POST["mt5id"]) && $_POST["mt5id"]){ ?>
+			  			<div class="alert alert-success" role="alert">
+						  <b>Your Code : </b> <?php echo sha1($_POST["mt5id"]);?>
+						</div>
+			  		<?php }else if(isset($_POST["mt5id"]) && $_POST["mt5id"] == ""){?>
+			  			<div class="alert alert-danger" role="alert">
+						  <b>Error: </b> MT5 ID Empty
+						</div>
+			  		<?php } ?>
+			  		<h1>Enter MT5 ID</h1>
+			  		<form method="post">
+			  		  <div class="form-group">
+					    <label for="exampleInputMt51">MT5 ID</label>
+					    <input type="text" name="mt5id" class="form-control" id="exampleInputMt51" placeholder="MT5 ID">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Email address</label>
+					    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					  </div>
+					  
+					  
+					  <button type="submit" class="btn btn-primary">Render Mac Serial</button>
+					</form>
+	  			</div>
+	  			<div class="col-3">
+	  				                        <iframe src="https://secure.icmarkets.com//Partner/Widget/PriceWidget/38308" width="273" frameborder="0"  height="480"></iframe>                    
+	  			</div>
+	  		</div>
 	  	</div>
     </div>
 
