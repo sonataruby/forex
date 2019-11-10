@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    #RewriteBase /
+
+    <Files ~ "\.(jpg|jpeg|png|gif|js|css|xml)$">
+       order deny,allow
+       allow from all
+    </Files>
+
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,QSA,NC,L]
+   
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*).html$ index.php?ct=$1 [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+
+    ErrorDocument 404 /index.php
+</IfModule>
