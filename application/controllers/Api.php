@@ -67,7 +67,7 @@ class Api extends MY_Controller {
 		$this->load->helper('string');
 		$arv = [
 			"id" => $loginid,
-			"shaodwn" => $data->shadown_code,
+			"shaodwn" => ($data->shadown_code ? $data->shadown_code : sha1(random_string('alnum', 16))),
 			"shaodwn_txt" => random_string('alnum', 16)
 		];
 		echo json_encode($arv);
