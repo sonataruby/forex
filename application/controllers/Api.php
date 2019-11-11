@@ -86,6 +86,7 @@ class Api extends MY_Controller {
 	}
 
 	public function telegram($symbol, $price=0, $profit=0,$time="", $type=""){
+		/*
 		$website="https://api.telegram.org/bot922775317:AAFMog8g_hh28jJMahw-BVHz4OtZBOd_rqs";
 		
 		$params=[
@@ -100,6 +101,7 @@ class Api extends MY_Controller {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close($ch);
+		*/
 	}
 }
 
