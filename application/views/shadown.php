@@ -7,7 +7,7 @@
 <?php } ?>
 
 <h1>Render Shadown Code</h1>
-<form method="post" action="/shaodown.html">
+<form method="post" action="/shadown.html">
   <div class="form-group">
     <label for="exampleInputEmail1">MT5 ID</label>
     <input type="text" name="mt5id" required="true" class="form-control" id="exampleInputEmail1">
