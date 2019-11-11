@@ -1,8 +1,12 @@
+<div class="container">
+
 <?php if($data){ ?>
   <div class="alert alert-success" role="alert">
     <b>Your Code :</b> <?php echo @$data->shadown_code;?>
   </div>
 <?php } ?>
+
+<h1>Render Shadown Code</h1>
 <form method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">MT5 ID</label>
@@ -24,3 +28,4 @@
   
   <button type="submit" class="btn btn-primary">Get Shadown Code</button>
 </form>
+</div>
