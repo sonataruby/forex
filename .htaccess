@@ -10,16 +10,13 @@
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,QSA,NC,L]
 
-    RewriteCond %{HTTP_HOST} !^www\.
-    RewriteRule ^sitemap\.xml$ /stores/%{HTTP_HOST}/sitemap\.xml [L]
-    RewriteRule ^image/(.*)$ /stores/%{HTTP_HOST}/image/$1 [L]
+   
 
     RewriteCond %{REQUEST_URI} ^system.*
     RewriteRule ^(.*)$ /index.php?/$1 [L]
     
    
-    RewriteCond %{REQUEST_URI} ^application.*
-    RewriteRule ^(.*)$ /index.php?/$1 [L]
+   
 
    
     RewriteCond %{REQUEST_FILENAME} !-f
