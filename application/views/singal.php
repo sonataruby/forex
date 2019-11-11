@@ -14,7 +14,7 @@
 				<td>100$</td>
 				<td>Thứ 2 hàng tuần</td>
 				<td>30$ / Tháng</td>
-				<td class="text-right"><a href="https://www.mql5.com/en/signals/657598" target="_bank" class="btn btn-info"></a></td>
+				<td class="text-right"><a href="https://www.mql5.com/en/signals/657598" target="_bank" class="btn btn-info">Xem..</a></td>
 			</tr>
 		</tbody>
 	</table>
