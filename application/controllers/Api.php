@@ -85,13 +85,13 @@ class Api extends MY_Controller {
 		echo json_encode(["timeline" => implode($arv, ';')]);
 	}
 
-	public function telegram($symbol, $price=0, $profit=0,$time="", $type=""){
-		/*
+	public function telegram($loginid=0,$symbol, $openprice=0,$price=0, $profit=0,$timestart="",$timeend="", $type=""){
+		$data = $this->db->get_where("account_access",["mt5_id" => $loginid, "status" => 1])->row();
 		$website="https://api.telegram.org/bot922775317:AAFMog8g_hh28jJMahw-BVHz4OtZBOd_rqs";
 		
 		$params=[
 		    'chat_id'=> $this->channelId,
-		    'text'=> "Chau Hoang Cuong : [".$type."] ".$symbol." ".$price." Lợi nhuận : ".$profit."$ lúc ".$time,
+		    'text'=> $data->name." : [".$type."] ".$symbol." giá : ".$openprice." chốt lệnh {$price} Lợi nhuận : ".$profit."$\nTu lúc ".$timestart." đến ".$timeend."\nSingal : ".$data->singalurl,
 		];
 		$ch = curl_init($website . '/sendMessage');
 		curl_setopt($ch, CURLOPT_HEADER, false);
@@ -101,7 +101,7 @@ class Api extends MY_Controller {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		curl_close($ch);
-		*/
+		
 	}
 }
 
