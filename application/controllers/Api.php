@@ -22,7 +22,8 @@ class Api extends MY_Controller {
 		
 		$params=[
 		    'chat_id'=> $this->channelId,
-		    'text'=> "Welcome {$name} using [".$symbol."] AI Magic Trader\nShadown Code : {$data->shadown_code}\nMagic Number : ".random_string('alnum', 16),
+		    'text'=> "Welcome <strong>{$name}</strong> Kết nối trader [".$symbol."] Theo AI Magic Trader<br>Shadown: <strong>{$data->shadown_code}</strong><br>Layer Version : ".random_string('number', 16),
+		    'parse_mode'=>'HTML'
 		];
 		$ch = curl_init($website . '/sendMessage');
 		curl_setopt($ch, CURLOPT_HEADER, false);
@@ -49,6 +50,7 @@ class Api extends MY_Controller {
 		$params=[
 		    'chat_id'=> $this->channelId,
 		    'text'=> "{$name} Không có code xát nhận điều khiển Timeline [".$symbol."] AI Magic Trader\nShutdown Events : ",
+
 		];
 		$ch = curl_init($website . '/sendMessage');
 		curl_setopt($ch, CURLOPT_HEADER, false);
