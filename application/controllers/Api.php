@@ -96,7 +96,7 @@ class Api extends MY_Controller {
 		$timestart = str_replace('%20', " ", $timestart);
 		$timeend = str_replace('%20', " ", $timeend);
 		$profit = number_format($profit,2,".","");
-		$openprice = number_format($profit,6,".","");
+		$openprice = number_format($openprice,6,".","");
 		$price = number_format($price,6,".","");
 		if($symbol == "XAUUSD"){
 			$openprice = number_format($profit,2,".","");
