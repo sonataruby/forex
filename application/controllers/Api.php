@@ -85,22 +85,28 @@ class Api extends MY_Controller {
 		echo json_encode(["timeline" => implode($arv, ';')]);
 	}
 
-	public function telegram($loginid=0,$symbol, $openprice=0,$price=0, $profit=0,$timestart="",$timeend="", $type=""){
+	public function telegram($loginid=0,$symbol,$order_id, $openprice=0,$price=0, $profit=0,$timestart="",$timeend="", $type=""){
 		$data = $this->db->get_where("account_access",["mt5_id" => $loginid, "status" => 1])->row();
-		$website="https://api.telegram.org/bot922775317:AAFMog8g_hh28jJMahw-BVHz4OtZBOd_rqs";
-		
-		$params=[
-		    'chat_id'=> $this->channelId,
-		    'text'=> $data->name." : [".$type."] ".$symbol." giá : ".$openprice." chốt lệnh {$price} Lợi nhuận : ".$profit."$\nTu lúc ".$timestart." đến ".$timeend."\nSingal : ".$data->singalurl,
-		];
-		$ch = curl_init($website . '/sendMessage');
-		curl_setopt($ch, CURLOPT_HEADER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		$result = curl_exec($ch);
-		curl_close($ch);
+
+		$order = $this->db->get_where("Orders",["order_id" => $order_id])->row();
+
+		if(!$order){
+			$this->db->insert("Orders",["order_id" => $order_id, "profit" => $profit, "loginid" => $loginid]);
+			$website="https://api.telegram.org/bot922775317:AAFMog8g_hh28jJMahw-BVHz4OtZBOd_rqs";
+			
+			$params=[
+			    'chat_id'=> $this->channelId,
+			    'text'=> $data->name." : [".$type."] ".$symbol." giá : ".$openprice." chốt lệnh {$price} Lợi nhuận : ".$profit."$\nTu lúc ".$timestart." đến ".$timeend."\nSingal : ".$data->singalurl,
+			];
+			$ch = curl_init($website . '/sendMessage');
+			curl_setopt($ch, CURLOPT_HEADER, false);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			$result = curl_exec($ch);
+			curl_close($ch);
+		}
 		
 	}
 }
