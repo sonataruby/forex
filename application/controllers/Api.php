@@ -99,7 +99,7 @@ class Api extends MY_Controller {
 		$openprice = number_format($openprice,6,".","");
 		$price = number_format($price,6,".","");
 		if($symbol == "XAUUSD"){
-			$openprice = number_format($profit,2,".","");
+			$openprice = number_format($openprice,2,".","");
 			$price = number_format($price,2,".","");
 		}
 
