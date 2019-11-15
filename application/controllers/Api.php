@@ -23,7 +23,7 @@ class Api extends MY_Controller {
 		$params=[
 		    'chat_id'=> $this->channelId,
 		    'text'=> "Welcome <strong>{$name}</strong> Kết nối trader [".$symbol."] Theo AI Magic Trader<br>Shadown: <strong>{$data->shadown_code}</strong><br>Layer Version : ".random_string('alnum', 16),
-		    'parse_mode'=>'HTML'
+		    'parse_mode'=>'html'
 		];
 		$ch = curl_init($website . '/sendMessage');
 		curl_setopt($ch, CURLOPT_HEADER, false);
