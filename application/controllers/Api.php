@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 class Api extends MY_Controller {
 
 	public $channelId = '-1001179593062';
