@@ -33,7 +33,7 @@ class Api extends MY_Controller {
 		curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
-		print_r($result);
+		
 		curl_close($ch);
 
 	}
@@ -71,8 +71,8 @@ class Api extends MY_Controller {
 		$this->load->helper('string');
 		$arv = [
 			"id" => $loginid,
-			"shaodwn" => ($data->shadown_code ? $data->shadown_code : sha1(random_string('alnum', 16))),
-			"shaodwn_txt" => random_string('alnum', 16)
+			"shaodwn" => ($data->shadown_code ? $data->shadown_code : random_string('sha1', 16)),
+			"shaodwn_txt" => random_string('nozero', 16)
 		];
 		echo json_encode($arv);
 	}
@@ -109,7 +109,7 @@ class Api extends MY_Controller {
 			
 			$params=[
 			    'chat_id'=> $this->channelId,
-			    'text'=> "<strong>".$data->name."</strong> [".$type."] ".$symbol." giá : <strong>".$openprice."</strong> chốt lệnh <strong>{$price}</strong> Lợi nhuận : ".$profit."$\nVào lệnh ".$timestart." đến ".$timeend."\nSingal Copy: ".$data->singalurl,
+			    'text'=> "<strong>".$data->name."</strong> [".$type."] ".$symbol." giá : <strong>".$openprice."</strong> chốt lệnh <strong>{$price}</strong> Lợi nhuận : ".$profit." USD \nVào lệnh ".$timestart." đến ".$timeend."\nSingal Copy: ".$data->singalurl,
 			    'parse_mode'=>'HTML'
 			];
 			$ch = curl_init($website . '/sendMessage');
