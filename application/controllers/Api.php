@@ -106,7 +106,7 @@ class Api extends MY_Controller {
 			$params=[
 			    'chat_id'=> $this->channelId,
 			    'text'=> "<strong>".$data->name."</strong> [".$type."] ".$symbol." giá : <strong>".$openprice."</strong> chốt lệnh <strong>{$price}</strong> Lợi nhuận : ".$profit."$<br>Vào lệnh ".$timestart." đến ".$timeend."<br>Singal Copy: ".$data->singalurl,
-			    'parse_mode'='HTML'
+			    'parse_mode'=>'HTML'
 			];
 			$ch = curl_init($website . '/sendMessage');
 			curl_setopt($ch, CURLOPT_HEADER, false);
