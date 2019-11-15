@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 class Api extends MY_Controller {
 
 	public $channelId = '-1001179593062';
@@ -23,8 +22,9 @@ class Api extends MY_Controller {
 		
 		$params=[
 		    'chat_id'=> $this->channelId,
-		    'text'=> "Welcome <strong>{$name}</strong> Kết nối trader [".$symbol."] Theo AI Magic Trader<br>Shadown: <strong>{$data->shadown_code}</strong><br>Layer Version : ".random_string('alnum', 16),
-		    'parse_mode'=>'html'
+		    'text'=> "Welcome <strong>{$name}</strong> Kết nối trader [".$symbol."] Theo AI Magic Trader\nShadown: <strong>{$data->shadown_code}</strong>\nLayer Version : ".random_string('nozero', 16),
+
+		    'parse_mode'=>'HTML'
 		];
 		$ch = curl_init($website . '/sendMessage');
 		curl_setopt($ch, CURLOPT_HEADER, false);
@@ -33,6 +33,7 @@ class Api extends MY_Controller {
 		curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
+		print_r($result);
 		curl_close($ch);
 
 	}
@@ -108,7 +109,7 @@ class Api extends MY_Controller {
 			
 			$params=[
 			    'chat_id'=> $this->channelId,
-			    'text'=> "<strong>".$data->name."</strong> [".$type."] ".$symbol." giá : <strong>".$openprice."</strong> chốt lệnh <strong>{$price}</strong> Lợi nhuận : ".$profit."$<br>Vào lệnh ".$timestart." đến ".$timeend."<br>Singal Copy: ".$data->singalurl,
+			    'text'=> "<strong>".$data->name."</strong> [".$type."] ".$symbol." giá : <strong>".$openprice."</strong> chốt lệnh <strong>{$price}</strong> Lợi nhuận : ".$profit."$\nVào lệnh ".$timestart." đến ".$timeend."\nSingal Copy: ".$data->singalurl,
 			    'parse_mode'=>'HTML'
 			];
 			$ch = curl_init($website . '/sendMessage');
