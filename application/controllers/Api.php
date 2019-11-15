@@ -98,14 +98,15 @@ class Api extends MY_Controller {
 			$openprice = number_format($profit,2,".","");
 			$price = number_format($price,2,".","");
 		}
-		
+
 		if(!$order){
 			$this->db->insert("Orders",["order_id" => $order_id, "profit" => $profit, "loginid" => $loginid]);
 			$website="https://api.telegram.org/bot922775317:AAFMog8g_hh28jJMahw-BVHz4OtZBOd_rqs";
 			
 			$params=[
 			    'chat_id'=> $this->channelId,
-			    'text'=> $data->name." : [".$type."] ".$symbol." giá : ".$openprice." chốt lệnh {$price} Lợi nhuận : ".$profit."$\nTu lúc ".$timestart." đến ".$timeend."\nSingal : ".$data->singalurl,
+			    'text'=> "<strong>".$data->name."</strong> [".$type."] ".$symbol." giá : <strong>".$openprice."</strong> chốt lệnh <strong>{$price}</strong> Lợi nhuận : ".$profit."$<br>Vào lệnh ".$timestart." đến ".$timeend."<br>Singal Copy: ".$data->singalurl,
+			    'parse_mode'='HTML'
 			];
 			$ch = curl_init($website . '/sendMessage');
 			curl_setopt($ch, CURLOPT_HEADER, false);
