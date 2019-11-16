@@ -89,7 +89,7 @@ class Api extends MY_Controller {
 		echo json_encode(["timeline" => implode($arv, ';')]);
 	}
 
-	public function telegram($loginid=0,$symbol,$order_id, $openprice=0,$price=0, $profit=0,$timestart="",$timeend="", $type=""){
+	public function telegram($loginid=0,$symbol,$order_id, $openprice=0,$price=0, $profit=0,$timeend="", $type=""){
 		$data = $this->db->get_where("account_access",["mt5_id" => $loginid, "status" => 1])->row();
 
 		$order = $this->db->get_where("Orders",["order_id" => $order_id])->row();
@@ -109,7 +109,7 @@ class Api extends MY_Controller {
 			
 			$params=[
 			    'chat_id'=> $this->channelId,
-			    'text'=> "<strong>".$data->name."</strong> [".$type."] ".$symbol." giá : <strong>".$openprice."</strong> chốt lệnh <strong>{$price}</strong> Lợi nhuận : ".$profit." USD \nVào lệnh ".$timestart." đến ".$timeend."\nSingal Copy ".$data->singalurl,
+			    'text'=> "<strong>".$data->name."</strong> [".$type."] ".$symbol." giá : <strong>".$openprice."</strong> chốt lệnh <strong>{$price}</strong> Lợi nhuận : ".$profit." USD \nLúc : ".$timeend."\nSingal Copy ".$data->singalurl,
 			    'parse_mode'=>'HTML'
 			];
 			$ch = curl_init($website . '/sendMessage');
