@@ -93,7 +93,7 @@ class Api extends MY_Controller {
 		$data = $this->db->get_where("account_access",["mt5_id" => $loginid, "status" => 1])->row();
 
 		$order = $this->db->get_where("Orders",["order_id" => $order_id])->row();
-		$timestart = str_replace('%20', " ", $timestart);
+		
 		$timeend = str_replace('%20', " ", $timeend);
 		$profit = number_format($profit,2,".","");
 		$openprice = number_format($openprice,6,".","");
