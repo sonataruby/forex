@@ -81,7 +81,7 @@ class Api extends MY_Controller {
 			"shaodwn" => ($data->shadown_code ? $data->shadown_code : random_string('sha1', 16)),
 			"shaodwn_txt" => random_string('nozero', 16)
 		];
-		$this->welcome($loginid);
+		if($data->welcome == 1) $this->welcome($loginid);
 		echo json_encode($arv);
 	}
 
