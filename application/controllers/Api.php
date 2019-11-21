@@ -20,9 +20,16 @@ class Api extends MY_Controller {
 		}
 		$website="https://api.telegram.org/bot922775317:AAFMog8g_hh28jJMahw-BVHz4OtZBOd_rqs";
 		
+		if($symbol == ""){
+
+			$text = "Welcome <strong>{$name}</strong> Kết nối trader";
+		}else{
+			$text = "Welcome <strong>{$name}</strong> Kết nối trader [".$symbol."] Theo AI Magic Trader\nShadown: <strong>{$data->shadown_code}</strong>\nLayer Version : ".random_string('nozero', 16);
+
+		}
 		$params=[
 		    'chat_id'=> $this->channelId,
-		    'text'=> "Welcome <strong>{$name}</strong> Kết nối trader [".$symbol."] Theo AI Magic Trader\nShadown: <strong>{$data->shadown_code}</strong>\nLayer Version : ".random_string('nozero', 16),
+		    'text'=> $text,
 
 		    'parse_mode'=>'HTML'
 		];
@@ -74,6 +81,7 @@ class Api extends MY_Controller {
 			"shaodwn" => ($data->shadown_code ? $data->shadown_code : random_string('sha1', 16)),
 			"shaodwn_txt" => random_string('nozero', 16)
 		];
+		$this->welcome($loginid);
 		echo json_encode($arv);
 	}
 
