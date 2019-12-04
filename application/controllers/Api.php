@@ -85,6 +85,33 @@ class Api extends MY_Controller {
 		echo json_encode($arv);
 	}
 
+	public function alert($symbol,$type,$price,$sl,$tp){
+		$tp = number_format($tp,6,".","");
+		$sl = number_format($sl,6,".","");
+		$price = number_format($price,6,".","");
+		if($symbol == "XAUUSD"){
+			$sl = number_format($sl,2,".","");
+			$tp = number_format($tp,2,".","");
+			$price = number_format($price,2,".","");
+		}
+
+			$website="https://api.telegram.org/bot922775317:AAFMog8g_hh28jJMahw-BVHz4OtZBOd_rqs";
+			
+			$params=[
+			    'chat_id'=> $this->channelId,
+			    'text'=> "<strong>[".$type."] ".$symbol."</strong> giá : <strong>".$price."</strong> SL <strong>{$sl}</strong> TP : ".$tp,
+			    'parse_mode'=>'HTML'
+			];
+			$ch = curl_init($website . '/sendMessage');
+			curl_setopt($ch, CURLOPT_HEADER, false);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			$result = curl_exec($ch);
+			curl_close($ch);
+
+	}
 	public function events($datetime=0){
 		$datetime = str_replace('.', '-', $datetime);
 		$data = $this->db->select("event_hour as timeline")->get_where("events_timeline",["event_date" => $datetime])->result();
