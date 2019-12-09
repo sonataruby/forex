@@ -86,9 +86,9 @@ class Api extends MY_Controller {
 	}
 
 	public function alert($symbol,$type,$price,$sl,$tp){
-		$tp = number_format($tp,6,".","");
-		$sl = number_format($sl,6,".","");
-		$price = number_format($price,6,".","");
+		$tp = number_format($tp,5,".","");
+		$sl = number_format($sl,5,".","");
+		$price = number_format($price,5,".","");
 		if($symbol == "XAUUSD"){
 			$sl = number_format($sl,2,".","");
 			$tp = number_format($tp,2,".","");
