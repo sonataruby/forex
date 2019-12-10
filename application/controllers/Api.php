@@ -85,7 +85,7 @@ class Api extends MY_Controller {
 		echo json_encode($arv);
 	}
 
-	public function alert($symbol,$type,$price,$sl,$tp){
+	public function alert($symbol,$type,$price,$sl,$tp,$time){
 		$tp = number_format($tp,5,".","");
 		$sl = number_format($sl,5,".","");
 		$price = number_format($price,5,".","");
@@ -99,7 +99,7 @@ class Api extends MY_Controller {
 			
 			$params=[
 			    'chat_id'=> $this->channelId,
-			    'text'=> "<strong>[".$type."] ".$symbol."</strong> giá : <strong>".$price."</strong> SL <strong>{$sl}</strong> TP : ".$tp,
+			    'text'=> "<strong>[".$type."] ".$symbol."</strong>\nPrice : <strong>".$price."</strong> \nSL <strong>{$sl}</strong> \nTP : <strong>".$tp."</strong>\nTime : ".$time,
 			    'parse_mode'=>'HTML'
 			];
 			$ch = curl_init($website . '/sendMessage');
@@ -131,8 +131,8 @@ class Api extends MY_Controller {
 		
 		$timeend = str_replace('%20', " ", $timeend);
 		$profit = number_format($profit,2,".","");
-		$openprice = number_format($openprice,6,".","");
-		$price = number_format($price,6,".","");
+		$openprice = number_format($openprice,5,".","");
+		$price = number_format($price,5,".","");
 		if($symbol == "XAUUSD"){
 			$openprice = number_format($openprice,2,".","");
 			$price = number_format($price,2,".","");
